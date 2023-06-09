@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MartialArtsSchool.Models;
 
@@ -9,6 +10,7 @@ public partial class Member
 
     public string FirstName { get; set; } = null!;
 
+    [MinLength(5)]
     public string LastName { get; set; } = null!;
 
     public DateTime BirthDate { get; set; }
