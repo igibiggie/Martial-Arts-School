@@ -52,8 +52,6 @@ namespace MartialArtsSchool.Controllers
                 return NotFound();
             }
 
-
-
             return View(categoryFromDb);
         }
         // bez metody post, bo nic nie edytuję
@@ -71,8 +69,6 @@ namespace MartialArtsSchool.Controllers
             {
                 return NotFound();
             }
-
-
 
             return View(categoryFromDb);
         }
