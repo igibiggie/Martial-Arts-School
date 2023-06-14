@@ -1,0 +1,34 @@
+﻿.details-container {
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+}
+
+
+
+    .details-container h4 {
+        color: #555;
+    }
+
+
+
+    .details-container dl {
+        margin: 0;
+    }
+
+
+
+    .details-container dt {
+        font-weight: bold;
+        color: #333;
+    }
+
+
+
+    .details-container dd {
+        margin-bottom: 10px;
+        color: #666;
+    }
