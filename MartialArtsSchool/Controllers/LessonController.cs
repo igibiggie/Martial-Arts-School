@@ -46,6 +46,7 @@ namespace MartialArtsSchool.Controllers
                 return NotFound();
             }
             var categoryFromDb = _db.Lessons.Find(id);
+            var membersFromDb = _db.Lessons.Find(id)?.IdMemebers;
 
             if (categoryFromDb == null)
             {
@@ -118,5 +119,25 @@ namespace MartialArtsSchool.Controllers
             return RedirectToAction("Index");
 
         }
+
+        //GET VIEW
+        public IActionResult ViewMembers(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var ter = _db.Lessons.Find(id);
+            IEnumerable<Member> categoryFromDb2 = _db.Lessons.Find(id).IdMemebers;
+  
+            if (categoryFromDb2 == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryFromDb2);
+        }
+
+       
     }
 }

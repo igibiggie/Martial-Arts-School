@@ -10,12 +10,12 @@ public partial class Lesson
 
     [Required, MinLength(2, ErrorMessage = "Należy wpisać minimum 2 znaki"),
      MaxLength(8, ErrorMessage = "Wpisano zbyt wiele znaków"),
-     RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Proszę użyć tylko liter")]
+     RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Proszę użyć tylko liter. Proszę o podanie tylko pierwszego imienia")]
     public string Name { get; set; } = null!;
 
     [MinLength(20, ErrorMessage = "Należy wpisać minimum 20 znaków"),
      MaxLength(255, ErrorMessage = "Wpisano zbyt wiele znaków")]
     public string Description { get; set; } = null!;
 
-    public virtual ICollection<Member> IdMemebers { get; } = new List<Member>();
+    public virtual ICollection<Member> IdMemebers { get; } = null!;
 }

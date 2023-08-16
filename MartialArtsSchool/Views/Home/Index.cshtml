@@ -3,23 +3,140 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Witamy w Akademii Sztuk Walki</h1>
-    <p>Odkryj moc i dyscyplinę sztuk walki w naszej nowoczesnej Akademii. Niezależnie od tego, czy jesteś początkujący, czy doświadczony wojownik, oferujemy różnorodne programy i kursy, które pomogą Ci osiągnąć swoje cele.</p>
-    <h2>Dlaczego Wybrać Naszą Akademię?</h2>
+    <h1 class="display-4">Welcome to the Academy of Martial Arts</h1>
     <p>
-        <b>Doświadczeni Instruktorzy: </b>
-        Nasi trenerzy to pasjonaci sztuk walki z wieloletnim doświadczeniem.
+        Discover the power and discipline of martial arts at our modern Academy. Whether you are a beginner or an experienced warrior, we offer a variety of programs and courses that will help you achieve your goals.
+    </p>
+    <h2>Why Choose Our Academy?</h2>
+    <p>
+        <b>Experienced Instructors:</b>
+        Our trainers are martial arts enthusiasts with many years of experience.
     </p>
     <p>
-        <b>Nowoczesne Obiekty: </b>
-        Oferujemy przestronną salę treningową wyposażoną w najnowocześniejszy sprzęt.
+        <b>Modern Facilities:</b>
+        We offer a spacious training hall equipped with the latest equipment.
     </p>
     <p>
-        <b>Dostosowane Programy: </b>
-        Oferujemy różnorodne programy dopasowane do Twojego poziomu zaawansowania i celów.
+        <b>Tailored Programs:</b>
+        We offer a variety of programs tailored to your level of advancement and goals.
     </p>
     <p>
-        <b>Wspólnota: </b>
-        Dołącz do naszej społeczności, która wspiera się wzajemnie w dążeniu do doskonałości.
+        <b>Community:</b>
+        Join our community that supports each other in the pursuit of excellence.
     </p>
+
+    <button id="signup-btn" class="btn btn-primary">Sign up</button>
 </div>
+
+        <div id="signup-modal" class="modal">
+<div class="modal-content">
+<span id="close-btn" class="close">&times;</span>
+<form>
+<h2>Sign up to our Academy</h2>
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" required>
+<label for="email">E-mail:</label>
+<input type="email" id="email" name="email" required>
+    <button type="submit" class="btn btn-success submit-button">Send</button>
+</form>
+</div>
+</div>
+
+ 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#signup-btn").click(function(){
+            $("#signup-modal").fadeIn();
+        });
+
+        $("#close-btn").click(function(){
+            $("#signup-modal").fadeOut();
+        });
+    });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var hasVisitedBefore = getCookie('hasVisitedBefore');
+
+        if (!hasVisitedBefore) {
+            setCookie('hasVisitedBefore', 'true', 30);
+        } else {
+            $("#signup-modal").fadeIn();
+        }
+
+        $("#signup-btn").click(function () {
+            $("#signup-modal").fadeIn();
+        });
+
+        $("#close-btn").click(function () {
+            $("#signup-modal").fadeOut();
+        });
+
+    });
+
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+</script>
+
+ 
+
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width:
+
+ 
+
+100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        width: 30%;
+    }
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .submit-button {
+        margin-top: 20px;
+    }
+</style>
