@@ -1,5 +1,6 @@
 ﻿using MartialArtsSchool.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MartialArtsSchool.Controllers
 {
@@ -45,8 +46,8 @@ namespace MartialArtsSchool.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _db.Lessons.Find(id);
-            var membersFromDb = _db.Lessons.Find(id)?.IdMemebers;
+            var categoryFromDb = _db.Lessons.Include(l => l.IdMemebers).SingleOrDefault(l => l.IdLesson == id);
+            var membersFromDb = categoryFromDb.IdMemebers;
 
             if (categoryFromDb == null)
             {
