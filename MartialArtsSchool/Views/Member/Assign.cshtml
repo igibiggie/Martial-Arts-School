@@ -1,0 +1,9 @@
+﻿@model MartialArtsSchool.Models.Lesson
+
+@{
+    ViewData["Title"] = "Assign";
+}
+
+<h1>All Lessons</h1>
+
+<select asp-for="IdLesson" asp-items="ViewBag.LessonList" class="form-control"></select>

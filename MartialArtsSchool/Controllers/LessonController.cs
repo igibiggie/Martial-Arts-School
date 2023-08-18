@@ -1,5 +1,6 @@
 ﻿using MartialArtsSchool.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace MartialArtsSchool.Controllers
@@ -47,7 +48,9 @@ namespace MartialArtsSchool.Controllers
                 return NotFound();
             }
             var categoryFromDb = _db.Lessons.Include(l => l.IdMemebers).SingleOrDefault(l => l.IdLesson == id);
-            var membersFromDb = categoryFromDb.IdMemebers;
+
+            ViewBag.LessonList = new SelectList(_db.Lessons, "IdLesson", "Name");
+            // poczytać
 
             if (categoryFromDb == null)
             {

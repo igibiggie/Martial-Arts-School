@@ -39,4 +39,33 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.IdMemeber" class="back-link">Edit</a>
     <a asp-action="Index" class="back-link">Back to List</a>
+    <a asp-action="Assign" class="back-link">Assign to Lesson</a>
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Course Name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.IdLessons)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<select asp-for="IdLessons" asp-items="ViewBag.LessonList" class="form-control"></select>
