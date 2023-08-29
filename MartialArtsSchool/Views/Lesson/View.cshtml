@@ -28,3 +28,37 @@
     <a asp-action="Edit" asp-route-id="@Model?.IdLesson" class="back-link">Edit</a>
     <a asp-action="Index" class="back-link">Back to List</a>
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Birth Date
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.IdMemebers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<select asp-for="IdLesson" asp-items="ViewBag.LessonList" class="form-control"></select>

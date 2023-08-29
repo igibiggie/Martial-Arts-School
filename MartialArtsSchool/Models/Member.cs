@@ -23,8 +23,8 @@ public partial class Member
     public string LastName { get; set; } = null!;
 
     [DataType(DataType.Date),
-    Range(typeof(DateOnly), "1920-12-01", "2008-12-31",
-        ErrorMessage = "Kursant powinien być urodzony pomiędzy {1}, a {2}")]
+    Range(typeof(DateTime), "1920-12-01T00:00:00", "2008-12-31T00:00:00",
+     ErrorMessage = "Kursant powinien być urodzony pomiędzy {1} a {2}")]
     // zmienić format błędu, ale użyć tej techniki w innym kontrolerze 
     public DateTime BirthDate { get; set ;}
 

@@ -1,5 +1,7 @@
 ﻿using MartialArtsSchool.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace MartialArtsSchool.Controllers
 {
@@ -45,12 +47,19 @@ namespace MartialArtsSchool.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _db.Members.Find(id);
+            var categoryFromDb = _db.Members.Include(l => l.IdLessons).SingleOrDefault(l => l.IdMemeber == id);
 
             if (categoryFromDb == null)
             {
                 return NotFound();
             }
+
+            var allLessons = _db.Lessons.ToList();
+            var lessonsToExclude = categoryFromDb.IdLessons.ToList();
+            var lessonsToShow = allLessons.Except(lessonsToExclude).ToList();
+
+            ViewBag.LessonList = new SelectList(lessonsToShow, "IdLesson", "Name");
+            // poczytać
 
             return View(categoryFromDb);
         }
@@ -117,6 +126,35 @@ namespace MartialArtsSchool.Controllers
             TempData["success"] = "Member deleted successfully";
             return RedirectToAction("Index");
 
+        }
+
+        // ===========================================================
+
+        //GET ASSIGN
+        public IActionResult Assign(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var baseCategory = _db.Members.Include(l => l.IdLessons).SingleOrDefault(l => l.IdMemeber == id);
+
+            if (baseCategory == null)
+            {
+                return NotFound();
+            }
+
+            var categoryFromDb = _db.Lessons.Except(baseCategory.IdLessons);
+
+            ViewBag.LessonList = new SelectList(categoryFromDb, "IdLesson", "Name");
+            // poczytać
+
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryFromDb);
         }
 
     }

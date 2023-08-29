@@ -10,7 +10,7 @@ public partial class Lesson
 
     [Required, MinLength(2, ErrorMessage = "Należy wpisać minimum 2 znaki"),
      MaxLength(8, ErrorMessage = "Wpisano zbyt wiele znaków"),
-     RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Proszę użyć tylko liter. Proszę o podanie tylko pierwszego imienia")]
+     RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Proszę użyć tylko liter, bez znaków specjalnych. Proszę o podanie tylko pierwszego imienia")]
     public string Name { get; set; } = null!;
 
     [MinLength(20, ErrorMessage = "Należy wpisać minimum 20 znaków"),
